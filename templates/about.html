@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | The Auto Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        nav a {
+            color: #ffffff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+            color: #D4AF37;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/static/IMG3.jpg') no-repeat center center/cover; /* ← Updated path */
+            filter: brightness(0.4);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #D4AF37;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+
+        /* Hide hamburger on desktop */
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        .content-section h2 {
+            color: #000000;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .content-section h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #D4AF37;
+            margin: 15px 0;
+        }
+
+        .mission-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .mission-content p {
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fff9e6 0%, #fff5cc 100%);
+            border-left: 4px solid #D4AF37;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .value-card h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .footer-section {
+            text-align: center;
+            padding: 40px;
+            background: #000000;
+            color: white;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 1px solid #333;
+        }
+
+        .footer-section h2 {
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #D4AF37;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #D4AF37;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section-bottom {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section-bottom h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .footer-section-bottom p, .footer-section-bottom a {
+            color: #cccccc;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section-bottom a:hover {
+            color: #D4AF37;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-item i {
+            min-width: 16px;
+            color: #D4AF37;
+        }
+
+        /* Remove underlines from all links */
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon */
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: white;
+        margin-left: auto; /* Push to right */
+    }
+
+    .nav-links {
+        display: none; /* Hide desktop nav by default */
+        position: absolute;
+        top: 70px; /* Below header */
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav when active */
+    }
+
+    nav a {
+        margin: 0; /* Remove horizontal spacing */
+        padding: 10px 20px; /* Add vertical padding */
+        display: block; /* Make links block elements */
+        text-align: center;
+    }
+
+}
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
+                </a>
+            </div>
+            <nav>
+                <!-- Hamburger Menu for Mobile -->
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+                </div>
+            
+                <!-- Desktop Navigation Links -->
+                <div class="nav-links" id="navLinks">
+                    <a href="/">Home</a>
+                    <a href="/inventory">Inventory</a>
+                    <a href="/about.html">About</a>
+                    <a href="/finance">Finance</a>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/gallery">Gallery</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About The Agents</h1>
+            <p>Your trusted partners in automotive excellence</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1 class="section-title">Our Story</h1>
+        <p class="section-subtitle">Driving excellence since 2017</p>
+
+        <section class="content-section">
+            <h2>WHO WE ARE</h2>
+            <div class="mission-content">
+                <p>Established in 2017 on Bram Fischer Drive, Randburg, Gauteng, The Auto Agents commenced operations as a vehicle wholesaler driven by a clear vision: to deliver exceptional quality automobiles while providing every client with an unforgettable experience.</p>
+                
+                <div class="highlight">
+                    <p><strong>This founding mission remains the cornerstone of our operations, evolving into an unwavering commitment to exceed expectations and create exceptional experiences for every customer we serve.</strong></p>
+                </div>
+        
+                <p>Since our inception, The Auto Agents has expanded into a comprehensive automotive business portfolio, all unified by our core principles. We take immense pride in serving multiple generations of families, with numerous clients choosing to return to us repeatedly – not merely for our vehicles, but for the integrity, transparency, and client-focused service that distinguishes our brand.</p>
+                
+                <p>These values are not simply part of our marketing; they represent the fundamental principles that guide our daily operations and business conduct.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>OUR CORE VALUES</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Quality Assurance</h3>
+                    <p>Every vehicle in our inventory undergoes rigorous inspection to ensure the highest standards of quality and reliability.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Honesty & Transparency</h3>
+                    <p>We believe in building trust through transparent dealings and honest communication with every customer.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Family Legacy</h3>
+                    <p>Proudly serving three generations of families, creating lasting relationships beyond just car sales.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Exceptional Experience</h3>
+                    <p>Every interaction is designed to create memorable experiences that exceed customer expectations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="footer-section">
+            <h2>GET BEHIND THE WHEEL OF OUR CARS</h2>
+            <p>Experience the difference that comes from working with automotive professionals who truly care about your journey.</p>
+            <a href="/contact.html" class="cta-button">Contact Us Today</a>
+        </section>
+    </main>
+
+<!-- Footer -->
+<footer style="background-color: #000; color: #fff; padding: 20px 0;">
+    <div class="container">
+        <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
+            <!-- Social Icons & Email -->
+            <div class="social-icons" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 10px;">
+                <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
+                    <i class="fas fa-envelope" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://wa.me/27767862666" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://facebook.com/theautoagentsSA" target="_blank" title="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://instagram.com/theautoagents" target="_blank" title="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://tiktok.com/@theautoagents" target="_blank" title="TikTok" aria-label="TikTok">
+                    <i class="fab fa-tiktok" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright" style="border-top: 1px solid #333; padding-top: 10px; font-size: 12px; color: #ccc;">
+                &copy; 2025 The Agents. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+    
+            // Toggle nav visibility on click
+            toggleButton.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+    
+            // Close nav when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

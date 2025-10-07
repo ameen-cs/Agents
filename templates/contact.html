@@ -1,0 +1,545 @@
+<!-- ACTIVATE EMAIL FORM ONCE HOSTED CORRECTLY..... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - The Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav a {
+            color: #fff;
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #D4AF37;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/static/IMG3.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color:rgb(245, 244, 243);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Main Content */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card h2 {
+            color: #000;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .contact-info {
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            color: #D4AF37;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            min-width: 25px;
+            padding-top: 3px;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .hours-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 500;
+            width: 40%;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #D4AF37;
+        }
+
+        /* BBB Section */
+        .bbb-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .bbb-section h2 {
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .bbb-logo {
+            width: 150px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        /* Map Section */
+        .map-section {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin: 40px 0;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: #D4AF37;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #D4AF37;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+        }
+
+        /* Hamburger Icon - Initially hidden on desktop */
+        .mobile-menu-toggle {
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            margin-left: auto; /* Push to the right if needed */
+        }
+
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .map-section {
+                height: 300px;
+            }
+
+            /* Show hamburger only on mobile */
+            .mobile-menu-toggle {
+                display: block; /* Show hamburger icon on mobile */
+            }
+
+            .nav-links {
+                display: none; /* Hide desktop nav by default on mobile */
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background: #000;
+                flex-direction: column;
+                padding: 15px 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex; /* Show nav when active */
+            }
+
+             nav a {
+                margin: 0; /* Remove horizontal spacing */
+                padding: 10px 20px; /* Add vertical padding */
+                display: block; /* Make links block elements */
+                text-align: center;
+            }
+
+        }
+
+        /* Remove underlines from social media icons in footer */
+footer .social-icons a {
+    text-decoration: none; /* This removes the underline */
+    /* The other styles you already have for these icons */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #333;
+    border-radius: 50%;
+    color: white; /* Or your icon color */
+    font-size: 1.2rem; /* Or your icon size */
+    transition: all 0.3s ease;
+}
+
+/* Ensure underline is also removed on hover/focus if needed */
+footer .social-icons a:hover,
+footer .social-icons a:focus {
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
+            </a>
+        </div>
+        <nav>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+            </div>
+
+            <!-- Desktop Navigation Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/inventory">Inventory</a>
+                <a href="/about.html">About</a>
+                <a href="/finance">Finance</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/gallery">Gallery</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>GET IN TOUCH</h1>
+            <p>Discover a world of sophistication, impeccable service, and exceptional value at The Agents. Every motoring story has a beginning, Let us help you write yours.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="contact-container">
+            <!---->
+            <div class="contact-card">
+                <h2>The Agents</h2>
+                <div class="contact-info">
+                    <p><i class="fas fa-quote-left"></i> We buy your beauty and your beast</p>
+
+                    <p><i class="fas fa-map-marker-alt"></i> 229A Bram Fischer Drive<br>Randburg<br>Gauteng</p>
+
+                    <p><i class="fas fa-phone"></i> 087 036 8087</p>
+
+                    <h3>Operating Hours</h3>
+                    <table class="hours-table">
+                        <tr>
+                            <td>Sales Department</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>MON-FRI:</td>
+                            <td>8AM-5PM</td>
+                        </tr>
+                        <tr>
+                            <td>SAT:</td>
+                            <td>9AM-1PM</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-card">
+                <h2>Send Us a Message</h2>
+                <!-- FormSubmit Form -->
+                <form action="https://formsubmit.co/momoameen6@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="sales">Sales Information</option>
+                            <option value="service">Service Request</option>
+                            <option value="testdrive">Test Drive Booking</option>
+                            <option value="finance">Finance Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="How can we assist you today?" required></textarea>
+                    </div>
+
+                    <!-- Redirect to a thank you page (optional) -->
+                    <!-- <input type="hidden" name="_next" value="https://theautoagents.co.za/thank-you">
+                    <!-- Enable reCAPTCHA -->
+                    <input type="hidden" name="_captcha" value="true">
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.59854615989!2d28.03979991502841!3d-26.13723698345593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e951a73d7d8e0b%3A0x6a1b4d4e4e4e4e4e!2s229A%20Bram%20Fischer%20Dr%2C%20Randburg%2C%202194!5e0!3m2!1sen!2sza!4v1623456789012!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        </div>
+
+    </div>
+
+<!-- Footer -->
+<footer style="background-color: #000; color: #fff; padding: 20px 0;">
+    <div class="container">
+        <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
+            <!-- Social Icons & Email -->
+            <div class="social-icons" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 10px;">
+                <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
+                    <i class="fas fa-envelope" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="  https://wa.me/27767862666  " target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://facebook.com/theautoagentsSA  " target="_blank" title="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://instagram.com/theautoagents  " target="_blank" title="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://tiktok.com/@theautoagents  " target="_blank" title="TikTok" aria-label="TikTok">
+                    <i class="fab fa-tiktok" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright" style="border-top: 1px solid #333; padding-top: 10px; font-size: 12px; color: #ccc;">
+                &copy; 2025 The Agents. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Removed the old form submission script as it's no longer needed
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            // Toggle nav visibility on click
+            toggleButton.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close nav when clicking a link (Delegate event for dynamically added links if needed, but this works for static ones)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

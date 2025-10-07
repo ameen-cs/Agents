@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - The Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Remove underlines from social media icons in footer */
+.social-icons a {
+    text-decoration: none; /* Ensure no underline */
+}
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Hide hamburger on desktop */
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        /* Show hamburger only on mobile */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon */
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: white;
+        margin-left: auto; /* Push to right */
+    }
+
+    .nav-links {
+        display: none; /* Hide desktop nav by default */
+        position: absolute;
+        top: 70px; /* Below header */
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav when active */
+    }
+
+    nav a {
+        margin: 0; /* Remove horizontal spacing */
+        padding: 10px 20px; /* Add vertical padding */
+        display: block; /* Make links block elements */
+        text-align: center;
+    }
+}
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav a {
+            color: #ffffff;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+            color: #D4AF37;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{{ url_for('static', filename='IMG3.jpg') }}') no-repeat center center/cover;
+            background-color: rgba(0, 0, 0, 0.4);
+            background-blend-mode: overlay;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 60px 0;
+            background: #fff;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            color: #000;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle shadow */
+            transition: transform 0.3s ease;
+            /* Remove fixed height - let it adapt to image */
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crops image to fill container */
+            transition: filter 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            filter: brightness(0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #cccccc;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #D4AF37;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
+            </a>
+        </div>
+        <nav>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+            </div>
+        
+            <!-- Desktop Navigation Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/inventory">Inventory</a>
+                <a href="/finance">Finance</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/gallery">Gallery</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Our Gallery</h1>
+        <p>Explore our collection of premium vehicles and experience the excellence that defines The Agents</p>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+    <div class="container">
+
+        <div class="gallery-grid">
+            <!-- Image 1 -->
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='IMG1.jpg') }}" alt="Gallery Image 1">
+            </div>
+            <!-- Image 2 -->
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='IMG2.jpg') }}" alt="Gallery Image 2">
+            </div>
+            <!-- Image 3 -->
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='IMG6.jpg') }}" alt="Gallery Image 3">
+            </div>
+             <!-- Image 4 -->
+             <div class="gallery-item">
+                <img src="{{ url_for('static', filename='IMG4.jpg') }}" alt="Gallery Image 3">
+            </div>
+             <!-- Image 5 -->
+             <div class="gallery-item">
+                <img src="{{ url_for('static', filename='IMG5.jpg') }}" alt="Gallery Image 3">
+            </div>
+             <!-- Image 6 -->
+             <div class="gallery-item">
+                <img src="{{ url_for('static', filename='IMG7.jpg') }}" alt="Gallery Image 3">
+            </div>
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="background-color: #000; color: #fff; padding: 20px 0;">
+    <div class="container">
+        <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
+            <!-- Social Icons & Email -->
+            <div class="social-icons" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 10px;">
+                <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
+                    <i class="fas fa-envelope" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://wa.me/27767862666  " target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://facebook.com/theautoagentsSA  " target="_blank" title="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://instagram.com/theautoagents  " target="_blank" title="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+                <a href="https://tiktok.com/@theautoagents  " target="_blank" title="TikTok" aria-label="TikTok">
+                    <i class="fab fa-tiktok" style="font-size: 18px; color: #D4AF37;"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright" style="border-top: 1px solid #333; padding-top: 10px; font-size: 12px; color: #ccc;">
+                &copy; 2025 The Agents. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle nav visibility on click
+        toggleButton.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close nav when clicking a link (optional)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

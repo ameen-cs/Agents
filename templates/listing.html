@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPFE888CN0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DPFE888CN0');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ car.make }} {{ car.model }} - The Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  "/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+            color: #D4AF37;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .back-link i {
+            margin-right: 5px;
+        }
+
+        /* Listing Container - Centered */
+        .listing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .listing-container {
+                gap: 20px;
+            }
+        }
+
+        /* Image Gallery - Full Width, Centered */
+        .image-gallery {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-color: #f5f5f5;
+        }
+
+        .main-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-top: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #f8f9fa;
+        }
+
+        .gallery-thumbnails::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .gallery-thumbnails::-webkit-scrollbar-track {
+            background: #f8f9fa;
+            border-radius: 3px;
+        }
+
+        .gallery-thumbnails::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .thumbnail.active {
+            border-color: #D4AF37;
+            outline: 2px solid #fff;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            background: #D4AF37;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 0.9em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 100px;
+        }
+
+        .btn:hover {
+            background: #c19d2a;
+        }
+
+        /* Details Section - Centered, Clean */
+        .details-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 25px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .make-model {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #D4AF37;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .info-item strong {
+            color: #000;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .description {
+            margin-top: 20px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            font-size: 0.95em;
+            color: #555;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .features-list {
+            margin-top: 25px;
+        }
+
+        .features-list h3 {
+            color: #000;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        .features {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .features li {
+            padding: 6px 0;
+            color: #555;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li i {
+            color: #D4AF37;
+            margin-right: 6px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #D4AF37;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+            min-height: 1px;
+            min-width: 1px;
+        }
+
+        .lightbox-navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .lightbox-navigation button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: all 0.3s;
+        }
+
+        /* Hide hamburger on desktop */
+        .mobile-menu-toggle {
+            display: none;
+        }
+
+        .lightbox-navigation button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .lightbox-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 0.9em;
+            z-index: 10;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: all 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-content {
+                width: 95%;
+                height: 95%;
+                border-radius: 8px;
+            }
+
+            .lightbox-navigation button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+
+            .lightbox-info {
+                font-size: 0.8em;
+            }
+        
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon */
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: white;
+        margin-left: auto; /* Push to right */
+    }
+
+    .nav-links {
+        display: none; /* Hide desktop nav by default */
+        position: absolute;
+        top: 70px; /* Below header */
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav when active */
+    }
+
+    nav a {
+        margin: 0; /* Remove horizontal spacing */
+        padding: 10px 20px; /* Add vertical padding */
+        display: block; /* Make links block elements */
+        text-align: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
+            </a>
+        </div>
+        <nav>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+            </div>
+        
+            <!-- Desktop Navigation Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/inventory">Inventory</a>
+                <a href="/about.html">About</a>
+                <a href="/finance">Finance</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/gallery">Gallery</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Main -->
+<main class="container">
+    <a href="/inventory" class="back-link"><i class="fas fa-arrow-left"></i> Back to Listings</a>
+
+    <div class="listing-container">
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <div class="main-image-container">
+                <img id="mainImage" class="main-image" src="{{ car.image_urls[0] if car.image_urls else '' }}" alt="{{ car.make }} {{ car.model }}">
+            </div>
+            <div class="gallery-thumbnails" id="thumbnails">
+                {% for image in car.image_urls %}
+                    <img src="{{ image }}" alt="Thumbnail" class="thumbnail {% if loop.index0 == 0 %}active{% endif %}" onclick="changeImage(this)">
+                {% endfor %}
+            </div>
+            <div class="action-buttons">
+                <button id="downloadBtn" class="btn"><i class="fas fa-download"></i> Download</button>
+                <button id="shareBtn" class="btn"><i class="fas fa-share"></i> Share</button>
+                <button id="emailBtn" class="btn"><i class="fas fa-envelope"></i> Email Dealer</button>
+                <button id="callBtn" class="btn"><i class="fas fa-phone"></i> Call Dealer</button>
+            </div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details-section">
+            <h1 class="make-model">{{ car.make }} {{ car.model }} {% if car.variant %}{{ car.variant }}{% endif %}</h1>
+            <p class="price">{{ car.price_display }}</p>
+
+            
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Year</strong>
+                    <span>{{ car.year }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Colour</strong>
+                    <span>{{ car.colour }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Body Type</strong>
+                    <span>{{ car.body_type or 'N/A' }}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Mileage</strong>
+                    <span>{{ car.mileage }} Km</span>
+                </div>
+            </div>
+
+            <div class="description">{{ car.description }}</div>
+
+            <!-- Optional Features List -->
+            {% if car.features and car.features|length > 0 %}
+                <div class="features-list">
+                    <h3>Key Features</h3>
+                    <ul class="features">
+                        {% for feature in car.features|slice(0, 8) %}
+                            <li><i class="fas fa-check-circle"></i> {{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <img id="lightboxImage" class="lightbox-image" src="" alt="">
+        <div class="lightbox-navigation">
+            <button id="prevImageBtn" onclick="prevImage()"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextImageBtn" onclick="nextImage()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-info" id="lightboxInfo">1 / {{ car.image_urls|length }}</div>
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
+            <!-- Social Icons & Email -->
+            <div class="social-icons" style="justify-content: center;">
+                <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/27767862666" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://facebook.com/theautoagentsSA" target="_blank" title="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/theautoagents" target="_blank" title="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@theautoagents" target="_blank" title="TikTok" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright">
+                &copy; 2025 The Agents. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Change main image when thumbnail is clicked
+    function changeImage(element) {
+        document.getElementById('mainImage').src = element.src;
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+        element.classList.add('active');
+    }
+
+    // Initialize lightbox variables
+    let currentImageIndex = 0;
+    const images = {{ car.image_urls | tojson }};
+    const totalImages = images.length;
+
+    // Open lightbox when main image is clicked
+    document.getElementById('mainImage').onclick = function() {
+        openLightbox();
+    };
+
+    // Open lightbox
+    function openLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxInfo = document.getElementById('lightboxInfo');
+
+        lightboxImage.src = images[currentImageIndex];
+        lightboxImage.onload = function () {
+            lightboxImage.style.display = 'none';
+            lightboxImage.style.display = 'block';
+        };
+
+        lightboxInfo.textContent = `${currentImageIndex + 1} / ${totalImages}`;
+        lightbox.classList.add('active');
+        updateNavigationButtons();
+    }
+
+    // Close lightbox
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+    }
+
+    // Navigate to previous image
+    function prevImage() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            document.getElementById('lightboxImage').src = images[currentImageIndex];
+            document.getElementById('lightboxInfo').textContent = `${currentImageIndex + 1} / ${totalImages}`;
+            updateNavigationButtons();
+        }
+    }
+
+    // Navigate to next image
+    function nextImage() {
+        if (currentImageIndex < totalImages - 1) {
+            currentImageIndex++;
+            document.getElementById('lightboxImage').src = images[currentImageIndex];
+            document.getElementById('lightboxInfo').textContent = `${currentImageIndex + 1} / ${totalImages}`;
+            updateNavigationButtons();
+        }
+    }
+
+    // Update navigation buttons state
+    function updateNavigationButtons() {
+        const prevBtn = document.getElementById('prevImageBtn');
+        const nextBtn = document.getElementById('nextImageBtn');
+        prevBtn.disabled = currentImageIndex === 0;
+        nextBtn.disabled = currentImageIndex === totalImages - 1;
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
+            else if (e.key === 'ArrowLeft') prevImage();
+            else if (e.key === 'ArrowRight') nextImage();
+        }
+    });
+
+    // Touch swipe support
+    let startX = 0;
+    document.getElementById('lightboxImage').addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    document.getElementById('lightboxImage').addEventListener('touchend', (e) => {
+        const currentX = e.changedTouches[0].clientX;
+        const diff = startX - currentX;
+        if (diff > 50 && currentImageIndex < totalImages - 1) nextImage();
+        else if (diff < -50 && currentImageIndex > 0) prevImage();
+    }, { passive: true });
+
+    // Download button
+    document.getElementById('downloadBtn').onclick = function() {
+        const mainImage = document.getElementById('mainImage');
+        const link = document.createElement('a');
+        link.href = mainImage.src;
+        const filename = '{{ car.make }}_{{ car.model }}_{{ car.year }}.jpg'.replace(/\s+/g, '_');
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    // Share button
+    document.getElementById('shareBtn').onclick = function() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            alert("✅ Link copied to clipboard!");
+        }).catch(err => {
+            const textArea = document.createElement("textarea");
+            textArea.value = url;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert("✅ Link copied to clipboard!");
+        });
+    };
+
+    // Email Dealer Button
+    document.getElementById('emailBtn').onclick = function() {
+        const subject = encodeURIComponent("Inquiry about {{ car.make }} {{ car.model }}");
+        const body = encodeURIComponent("Hi, I'm interested in the {{ car.make }} {{ car.model }} listed on your site. Could you please provide more details?");
+        const mailtoLink = `mailto:autoagents23@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = mailtoLink;
+    };
+
+    // Call Dealer Button
+    document.getElementById('callBtn').onclick = function() {
+        const phoneNumber = "0870368087";
+        window.location.href = `tel:${phoneNumber}`;
+    };
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle nav visibility on click
+        toggleButton.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close nav when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

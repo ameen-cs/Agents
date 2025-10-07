@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Finance Calculator - The Agents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  "/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 400px; /* Adjust height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-bottom: 30px; /* Add some space below the hero */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Use your local image */
+            background: url('/static/IMG3.jpg') no-repeat center center/cover;
+            /* Add a dark overlay for better text readability */
+            background-color: rgba(0, 0, 0, 0.4);
+            background-blend-mode: overlay; /* Blends the color with the image */
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem; /* Adjusted size */
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem; /* Adjusted size */
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Optional CTA Button Styles (if you add the button) */
+        /*
+        .cta-button {
+            display: inline-block;
+            background: #D4AF37;
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #D4AF37;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #D4AF37;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        */
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+            color: #D4AF37;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .back-link i {
+            margin-right: 5px;
+        }
+
+        .page-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .finance-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .finance-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 25px;
+        }
+
+        .calculator-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .range-container input[type="range"] {
+            flex: 1;
+        }
+
+        .range-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: 500;
+            color: #D4AF37;
+        }
+
+        .calculate-btn {
+            background: #D4AF37;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .calculate-btn:hover {
+            background: #c19d2a;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-top: 10px;
+        }
+
+        .results-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .monthly-payment {
+            font-size: 2em;
+            font-weight: 700;
+            color: #D4AF37;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .amortization-chart {
+            margin-top: 30px;
+        }
+
+        .chart-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .chart-container {
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: #D4AF37;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            min-height: 5px;
+        }
+
+        .chart-bar.principal {
+            background: #000;
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #D4AF37;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #D4AF37;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+        }
+
+        /* Info Section */
+        .info-section {
+            margin-top: 40px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 25px;
+        }
+
+        .info-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .info-content {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .info-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        .info-content li {
+            margin-bottom: 10px;
+        }
+
+        /* Hide hamburger on desktop */
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon */
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: white;
+        margin-left: auto; /* Push to right */
+    }
+
+    .nav-links {
+        display: none; /* Hide desktop nav by default */
+        position: absolute;
+        top: 70px; /* Below header */
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav when active */
+    }
+
+    nav a {
+        margin: 0; /* Remove horizontal spacing */
+        padding: 10px 20px; /* Add vertical padding */
+        display: block; /* Make links block elements */
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+
+
+<!-- Header -->
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
+            </a>
+        </div>
+        <nav>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+            </div>
+        
+            <!-- Desktop Navigation Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/inventory">Inventory</a>
+                <a href="/about.html">About</a>
+                <a href="/finance">Finance</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/gallery">Gallery</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Vehicle Finance Made Simple</h1>
+        <p>Calculate your monthly payments and plan your budget with confidence</p>
+        <!-- Optional CTA Button -->
+        <!-- <a href="#financeCalculator" class="cta-button">Calculate Now</a> -->
+    </div>
+</section>
+
+<!-- Main -->
+<main class="container">
+
+  
+    <div class="finance-container">
+        <!-- Calculator Section -->
+        <div class="calculator-section">
+            <h2 class="calculator-title">Loan Details</h2>
+            
+            <div class="input-group">
+                <label for="vehiclePrice">Vehicle Price (R)</label>
+                <input type="number" id="vehiclePrice" value="350000" min="50000" max="5000000">
+                <div class="range-container">
+                    <input type="range" id="priceRange" min="50000" max="5000000" value="350000" step="10000">
+                    <span class="range-value" id="priceValue">R350,000</span>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="deposit">Deposit Amount (R)</label>
+                <input type="number" id="deposit" value="50000" min="0" max="2000000">
+                <div class="range-container">
+                    <input type="range" id="depositRange" min="0" max="2000000" value="50000" step="5000">
+                    <span class="range-value" id="depositValue">R50,000</span>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="interestRate">Interest Rate (%)</label>
+                <input type="number" id="interestRate" value="10.5" min="0" max="30" step="0.1">
+                <div class="range-container">
+                    <input type="range" id="interestRange" min="0" max="30" value="10.5" step="0.1">
+                    <span class="range-value" id="interestValue">10.5%</span>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="loanTerm">Loan Term (months)</label>
+                <input type="number" id="loanTerm" value="60" min="12" max="120">
+                <div class="range-container">
+                    <input type="range" id="termRange" min="12" max="120" value="60" step="6">
+                    <span class="range-value" id="termValue">60 months</span>
+                </div>
+            </div>
+            
+            <button id="calculateBtn" class="calculate-btn">Calculate Monthly Payment</button>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="results-section">
+            <h2 class="results-title">Payment Summary</h2>
+            
+            <div class="monthly-payment" id="monthlyPayment">R7,250</div>
+            
+            <div class="result-item">
+                <span class="result-label">Loan Amount:</span>
+                <span class="result-value" id="loanAmount">R300,000</span>
+            </div>
+            
+            <div class="result-item">
+                <span class="result-label">Total Interest:</span>
+                <span class="result-value" id="totalInterest">R135,000</span>
+            </div>
+            
+            <div class="result-item">
+                <span class="result-label">Total Repayment:</span>
+                <span class="result-value" id="totalRepayment">R435,000</span>
+            </div>
+            
+            <div class="result-item">
+                <span class="result-label">Interest Rate:</span>
+                <span class="result-value" id="displayInterestRate">10.5%</span>
+            </div>
+            
+            <div class="result-item">
+                <span class="result-label">Loan Term:</span>
+                <span class="result-value" id="displayLoanTerm">60 months</span>
+            </div>
+            
+            <div class="amortization-chart">
+                <h3 class="chart-title">Payment Breakdown</h3>
+                <div class="chart-container">
+                    <div class="chart-bar principal" id="principalBar" style="height: 60%"></div>
+                    <div class="chart-bar interest" id="interestBar" style="height: 40%"></div>
+                </div>
+                <div class="chart-labels">
+                    <span>Principal</span>
+                    <span>Interest</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Information Section -->
+    <div class="info-section">
+        <h3 class="info-title">Understanding Vehicle Finance</h3>
+        <div class="info-content">
+            <p>Getting financing for your new vehicle doesn't have to be complicated. Our finance calculator helps you understand your monthly obligations and plan your budget effectively.</p>
+            
+            <ul>
+                <li><strong>Vehicle Price:</strong> The total purchase price of the vehicle you're interested in.</li>
+                <li><strong>Deposit Amount:</strong> The upfront payment you make to reduce the loan amount.</li>
+                <li><strong>Interest Rate:</strong> The annual percentage rate charged by the lender.</li>
+                <li><strong>Loan Term:</strong> The duration over which you'll repay the loan (typically 12-84 months).</li>
+            </ul>
+            
+            <p>Remember that your monthly payment includes both principal (the amount borrowed) and interest (the cost of borrowing). Making a larger deposit or choosing a shorter loan term will reduce the total interest paid over the life of the loan.</p>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
+            <!-- Social Icons & Email -->
+            <div class="social-icons" style="justify-content: center;">
+                <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/27767862666" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://facebook.com/theautoagentsSA" target="_blank" title="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/theautoagents" target="_blank" title="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@theautoagents" target="_blank" title="TikTok" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Text -->
+            <div class="copyright">
+                &copy; 2025 The Agents. All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // DOM Elements
+    const vehiclePriceInput = document.getElementById('vehiclePrice');
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+    
+    const depositInput = document.getElementById('deposit');
+    const depositRange = document.getElementById('depositRange');
+    const depositValue = document.getElementById('depositValue');
+    
+    const interestRateInput = document.getElementById('interestRate');
+    const interestRange = document.getElementById('interestRange');
+    const interestValue = document.getElementById('interestValue');
+    
+    const loanTermInput = document.getElementById('loanTerm');
+    const termRange = document.getElementById('termRange');
+    const termValue = document.getElementById('termValue');
+    
+    const calculateBtn = document.getElementById('calculateBtn');
+    
+    const monthlyPaymentEl = document.getElementById('monthlyPayment');
+    const loanAmountEl = document.getElementById('loanAmount');
+    const totalInterestEl = document.getElementById('totalInterest');
+    const totalRepaymentEl = document.getElementById('totalRepayment');
+    const displayInterestRateEl = document.getElementById('displayInterestRate');
+    const displayLoanTermEl = document.getElementById('displayLoanTerm');
+    const principalBar = document.getElementById('principalBar');
+    const interestBar = document.getElementById('interestBar');
+    
+    // Format currency
+    function formatCurrency(value) {
+        return 'R' + value.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+    // Update range inputs when number inputs change
+    vehiclePriceInput.addEventListener('input', function() {
+        priceRange.value = this.value;
+        priceValue.textContent = formatCurrency(parseFloat(this.value));
+        calculateLoan();
+    });
+    
+    depositInput.addEventListener('input', function() {
+        depositRange.value = this.value;
+        depositValue.textContent = formatCurrency(parseFloat(this.value));
+        calculateLoan();
+    });
+    
+    interestRateInput.addEventListener('input', function() {
+        interestRange.value = this.value;
+        interestValue.textContent = parseFloat(this.value).toFixed(1) + '%';
+        calculateLoan();
+    });
+    
+    loanTermInput.addEventListener('input', function() {
+        termRange.value = this.value;
+        termValue.textContent = this.value + ' months';
+        calculateLoan();
+    });
+    
+    // Update number inputs when range inputs change
+    priceRange.addEventListener('input', function() {
+        vehiclePriceInput.value = this.value;
+        priceValue.textContent = formatCurrency(parseFloat(this.value));
+        calculateLoan();
+    });
+    
+    depositRange.addEventListener('input', function() {
+        depositInput.value = this.value;
+        depositValue.textContent = formatCurrency(parseFloat(this.value));
+        calculateLoan();
+    });
+    
+    interestRange.addEventListener('input', function() {
+        interestRateInput.value = this.value;
+        interestValue.textContent = parseFloat(this.value).toFixed(1) + '%';
+        calculateLoan();
+    });
+    
+    termRange.addEventListener('input', function() {
+        loanTermInput.value = this.value;
+        termValue.textContent = this.value + ' months';
+        calculateLoan();
+    });
+    
+    // Calculate loan function
+    function calculateLoan() {
+        const vehiclePrice = parseFloat(vehiclePriceInput.value) || 0;
+        const deposit = parseFloat(depositInput.value) || 0;
+        const interestRate = parseFloat(interestRateInput.value) || 0;
+        const loanTerm = parseInt(loanTermInput.value) || 1;
+        
+        // Calculate loan amount
+        const loanAmount = vehiclePrice - deposit;
+        
+        // Calculate monthly interest rate
+        const monthlyInterestRate = (interestRate / 100) / 12;
+        
+        // Calculate monthly payment using the loan formula
+        const monthlyPayment = loanAmount * 
+            (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTerm)) / 
+            (Math.pow(1 + monthlyInterestRate, loanTerm) - 1);
+        
+        // Calculate total repayment and interest
+        const totalRepayment = monthlyPayment * loanTerm;
+        const totalInterest = totalRepayment - loanAmount;
+        
+        // Update UI
+        monthlyPaymentEl.textContent = formatCurrency(monthlyPayment);
+        loanAmountEl.textContent = formatCurrency(loanAmount);
+        totalInterestEl.textContent = formatCurrency(totalInterest);
+        totalRepaymentEl.textContent = formatCurrency(totalRepayment);
+        displayInterestRateEl.textContent = interestRate.toFixed(1) + '%';
+        displayLoanTermEl.textContent = loanTerm + ' months';
+        
+        // Update chart
+        if (totalRepayment > 0) {
+            const principalPercentage = (loanAmount / totalRepayment) * 100;
+            const interestPercentage = (totalInterest / totalRepayment) * 100;
+            
+            principalBar.style.height = principalPercentage + '%';
+            interestBar.style.height = interestPercentage + '%';
+        }
+    }
+    
+    // Initial calculation
+    calculateBtn.addEventListener('click', calculateLoan);
+    calculateLoan();
+    
+    // Initialize range values
+    priceValue.textContent = formatCurrency(parseFloat(vehiclePriceInput.value));
+    depositValue.textContent = formatCurrency(parseFloat(depositInput.value));
+    interestValue.textContent = parseFloat(interestRateInput.value).toFixed(1) + '%';
+    termValue.textContent = loanTermInput.value + ' months';
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        // Toggle nav visibility on click
+        toggleButton.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close nav when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
