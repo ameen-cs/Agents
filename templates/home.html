@@ -1,22 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPFE888CN0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DPFE888CN0');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPFE888CN0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DPFE888CN0');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Agents | Premium Vehicles in South Africa</title>
+
+    <!-- Primary Meta Tags -->
+    <title>The Agents | Premium & Luxury Vehicles in Sandton, South Africa</title>
+    <meta name="description" content="The Agents: Sandton’s premier dealership for handpicked luxury & premium vehicles. Competitive pricing, easy financing, and exceptional service across South Africa. Visit us today!">
+    <meta name="keywords" content="luxury cars South Africa, premium vehicles Sandton, used luxury cars Johannesburg, car dealership Sandton, The Auto Agents, Mercedes AMG GLE, car finance South Africa, best car deals Johannesburg">
+    <meta name="author" content="The Agents">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://theautoagents.co.za" />
+
+    <!-- Favicon (using logo.jpg — works in most modern browsers) -->
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo.jpg') }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theautoagents.co.za">
+    <meta property="og:title" content="The Agents | Premium Vehicles in South Africa">
+    <meta property="og:description" content="Sandton’s trusted luxury car dealership. Handpicked premium vehicles, seamless financing, and white-glove service. Explore our inventory today.">
+    <meta property="og:image" content="{{ url_for('static', filename='logo.jpg') }}">
+    <meta property="og:site_name" content="The Agents">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://theautoagents.co.za">
+    <meta name="twitter:title" content="The Agents | Premium Vehicles in South Africa">
+    <meta name="twitter:description" content="Discover luxury, value, and service at The Agents—Sandton’s premier car dealership.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='logo.jpg') }}">
+
+    <!-- Fonts & Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Data (JSON-LD) for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "The Agents",
+      "image": "https://theautoagents.co.za/static/logo.jpg",
+      "@id": "https://theautoagents.co.za",
+      "url": "https://theautoagents.co.za",
+      "telephone": "+27694098641",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "229 Bram Fischer Dr, Kensington B",
+        "addressLocality": "Randburg",
+        "addressRegion": "Gauteng",
+        "postalCode": "2194",
+        "addressCountry": "ZA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.107,
+        "longitude": 28.033
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://facebook.com/theautoagentsSA",
+        "https://instagram.com/theautoagents",
+        "https://tiktok.com/@theautoagents",
+        "https://wa.me/27767862666"
+      ]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -120,98 +186,93 @@
         }
 
         /* Hero Slideshow */
-.hero-slideshow {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
+        .hero-slideshow {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-.slides-container {
-    display: flex;
-    height: 100%;
-    transition: transform 0.8s ease-in-out;
-}
+        .slides-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
 
-.slide {
-    min-width: 100%;
-    height: 100%;
-    position: relative;
-}
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
 
-.slide-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Keep cover for full coverage */
-    display: block;
-    background-size: cover;
-    background-position: center center; /* Ensure image is centered */
-}
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background-size: cover;
+            background-position: center center;
+        }
 
-/* Optional: Use 'contain' if you don't want any cropping */
-/* .slide-image {
-    object-fit: contain; // This will show entire image, but may have black bars
-} */
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 90%;
+            max-width: 800px;
+            z-index: 2;
+            padding: 20px;
+        }
 
-.slide-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    width: 90%;
-    max-width: 800px;
-    z-index: 2;
-    padding: 20px;
-}
+        .slide-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
 
-.slide-content h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    letter-spacing: 1px;
-}
+        .slide-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
 
-.slide-content p {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
 
-.slide-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-}
+        .slideshow-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
 
-.slideshow-nav {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 3;
-}
+        .slide-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.slide-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.slide-indicator.active {
-    background: #D4AF37;
-    transform: scale(1.2);
-}
+        .slide-indicator.active {
+            background: #D4AF37;
+            transform: scale(1.2);
+        }
 
         /* Branding Section */
         .branding {
@@ -585,156 +646,116 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
-        /* --- Footer Styles --- */
+        /* Footer */
+        footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 70px 0 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-/* Base Footer Styling */
-footer {
-    background: #000000;
-    color: #ffffff;
-    padding: 70px 0 30px; /* Keeps large top padding */
-    font-family: 'Montserrat', sans-serif; /* Apply base font family */
-}
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
 
-/* Footer Content Grid (for potential other sections) */
-.footer-content {
-    display: grid;
-    /* Keeps the grid for flexibility, but we'll primarily use one column for icons/copyright */
-    grid-template-columns: 1fr; /* Default to single column */
-    gap: 40px;
-    margin-bottom: 30px; /* Reduced margin below content */
-}
+        .footer-section h3 {
+            color: #D4AF37;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-/* Styles for potential footer sections (like Contact) */
-.footer-section h3 {
-    color: #D4AF37;
-    margin-bottom: 25px;
-    font-size: 1.4rem;
-    position: relative;
-    padding-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-}
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #D4AF37;
+        }
 
-.footer-section h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background: #D4AF37;
-}
+        .footer-section p,
+        .footer-section a {
+            color: #cccccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-.footer-section p,
-.footer-section a {
-    color: #cccccc;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    display: block;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+        .footer-section a:hover {
+            color: #D4AF37;
+            transform: translateX(5px);
+        }
 
-.footer-section a:hover {
-    color: #D4AF37;
-    transform: translateX(5px);
-}
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
 
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 20px;
-}
+        .contact-item i {
+            min-width: 20px;
+            color: #D4AF37;
+            margin-top: 5px;
+        }
 
-.contact-item i {
-    min-width: 20px;
-    color: #D4AF37;
-    margin-top: 5px;
-}
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
 
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
 
-/* --- Social Media Icons --- */
-/* Container for icons, centered */
-.social-icons {
-    display: flex;
-    justify-content: center; /* Center the icons horizontally */
-    gap: 20px; /* Slightly increased gap for better spacing */
-    margin: 20px 0; /* Add vertical margin around the icons */
-    /* Remove margin-top if it causes unwanted space */
-}
+        .social-icons a:hover {
+            background: #D4AF37;
+            transform: translateY(-5px);
+        }
 
-/* Individual icon link styling */
-.social-icons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px; /* Slightly larger icons */
-    height: 50px;
-    background: #333;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.5rem; /* Slightly larger icon size */
-    transition: all 0.3s ease;
-    text-decoration: none; /* Ensure no underline */
-}
-
-.social-icons a:hover {
-    background: #D4AF37;
-    transform: translateY(-5px); /* Subtle lift effect */
-    /* Removed scale to prevent potential layout shift, translateY is smoother */
-}
-
-
-/* --- Copyright --- */
-/* Styling for the copyright text at the very bottom */
-.copyright {
-    text-align: center;
-    padding-top: 20px; /* Reduced padding */
-    color: #999;
-    font-size: 0.95rem;
-    border-top: 1px solid #333;
-    margin-top: 20px; /* Reduced margin */
-}
-
-
-/* Optional: Adjust container padding on smaller screens if needed */
-@media (max-width: 768px) {
-    footer {
-        padding: 50px 0 20px; /* Adjust padding for smaller screens */
-    }
-    .social-icons {
-        gap: 15px; /* Reduce gap on smaller screens */
-    }
-    .social-icons a {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-    }
-}
-
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+            font-size: 0.95rem;
+            border-top: 1px solid #333;
+            margin-top: 20px;
+        }
 
         /* Responsive */
         @media (max-width: 992px) {
-            .slide-content h2 {
-                font-size: 2.8rem;
-            }
-            
-            .slide-content p {
-                font-size: 1.2rem;
-            }
+            .slide-content h2 { font-size: 2.8rem; }
+            .slide-content p { font-size: 1.2rem; }
         }
 
-        /* Hide hamburger on desktop */
-.mobile-menu-toggle {
-    display: none;
-}
+        .mobile-menu-toggle { display: none; }
 
-        /* Hide desktop links on small screens */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Hide desktop nav by default on mobile */
+                display: none;
                 position: absolute;
-                top: 70px; /* Position below header */
+                top: 70px;
                 left: 0;
                 width: 100%;
                 background: #000;
@@ -743,101 +764,62 @@ footer {
                 box-shadow: 0 4px 12px rgba(0,0,0,0.1);
                 z-index: 999;
             }
-        
-            .nav-links.active {
-                display: flex; /* Show nav when active */
-            }
-        
+            .nav-links.active { display: flex; }
             .mobile-menu-toggle {
-                display: block; /* Show hamburger on mobile */
+                display: block;
                 cursor: pointer;
                 font-size: 1.5rem;
                 color: white;
-                margin-left: auto; /* Push to right */
+                margin-left: auto;
             }
-        
             nav a {
-                margin: 0; /* Remove horizontal spacing */
-                padding: 10px 20px; /* Add vertical padding */
-                display: block; /* Make links block elements */
+                margin: 0;
+                padding: 10px 20px;
+                display: block;
                 text-align: center;
             }
-        
-            
-            .slide-content h2 {
-                font-size: 2.2rem;
-            }
-            
-            .slide-content p {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .branding {
-                padding: 70px 0;
-            }
-            
-            .services, .featured-cars, .values, .cta-section {
-                padding: 70px 0;
-            }
+            .slide-content h2 { font-size: 2.2rem; }
+            .slide-content p { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            .branding, .services, .featured-cars, .values, .cta-section { padding: 70px 0; }
         }
 
         @media (max-width: 576px) {
-            .slide-content h2 {
-                font-size: 1.8rem;
-            }
-            
-            .slide-content p {
-                font-size: 0.9rem;
-            }
-            
-            .service-card {
-                padding: 30px 20px;
-            }
-            
-            .car-specs {
-                flex-direction: column;
-                gap: 15px;
-            }
+            .slide-content h2 { font-size: 1.8rem; }
+            .slide-content p { font-size: 0.9rem; }
+            .service-card { padding: 30px 20px; }
+            .car-specs { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
-
-
     <!-- Header -->
     <header>
-    <div class="container header-content">
-        <div class="logo">
-            <a href="/">
-                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
-            </a>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="The Agents Logo">
+                </a>
+            </div>
+            <nav>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="/">Home</a>
+                    <a href="/inventory">Inventory</a>
+                    <a href="/finance">Finance</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/gallery">Gallery</a>
+                </div>
+            </nav>
         </div>
-        <nav>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <i class="fas fa-bars"></i> <!-- Hamburger icon -->
-            </div>
-        
-            <!-- Desktop Navigation Links -->
-            <div class="nav-links" id="navLinks">
-                <a href="/">Home</a>
-                <a href="/inventory">Inventory</a>
-                <a href="/finance">Finance</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/gallery">Gallery</a>
-            </div>
-        </nav>
     </header>
 
     <!-- Hero Slideshow -->
     <section class="hero-slideshow">
         <div class="slides-container">
-            <!-- Slide 1 -->
             <div class="slide">
                 <img src="{{ url_for('static', filename='IMG3.jpg') }}" alt="Luxury Car" class="slide-image">
                 <div class="slide-overlay"></div>
@@ -847,8 +829,6 @@ footer {
                     <a href="/inventory" class="cta-button">Browse Inventory</a>
                 </div>
             </div>
-            
-            <!-- Slide 2 -->
             <div class="slide">
                 <img src="{{ url_for('static', filename='IMG2.jpg') }}" alt="Luxury Car" class="slide-image">
                 <div class="slide-overlay"></div>
@@ -858,18 +838,16 @@ footer {
                     <a href="/finance" class="cta-button">Explore Financing</a>
                 </div>
             </div>
-            
-<!-- Slide 3 -->
-<div class="slide">
-    <img src="{{ url_for('static', filename='IMG3.jpg') }}" alt="Luxury Car" class="slide-image">
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-        <h2>OUR STORY</h2>
-        <p>Discover the passion and expertise behind The Agents</p>
-        <a href="/about.html" class="cta-button">Learn More</a>
-    </div>
-</div>
-        
+            <div class="slide">
+                <img src="{{ url_for('static', filename='IMG3.jpg') }}" alt="Luxury Car" class="slide-image">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2>OUR STORY</h2>
+                    <p>Discover the passion and expertise behind The Agents</p>
+                    <a href="/about.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </div>
         <div class="slideshow-nav">
             <div class="slide-indicator active"></div>
             <div class="slide-indicator"></div>
@@ -877,49 +855,38 @@ footer {
         </div>
     </section>
 
-<!-- Branding Section -->
-<section class="branding">
-    <div class="container">
-        <h2>Welcome to The Agents</h2>
-        <p>Born in Sandton, inspired by Africa. We bring together world-class automobiles and the soul of Mzansi—because luxury shouldn’t lose its heartbeat.</p>
-        
-        <div class="highlight-box">
-            <p>Every vehicle we offer is handpicked for quality, character, and value. Every client is treated like family. And every deal? It’s sealed not just with paperwork—but with <strong>respect, heritage, and a shared vision for the road ahead</strong>.</p>
+    <!-- Branding Section -->
+    <section class="branding">
+        <div class="container">
+            <h2>Welcome to The Agents</h2>
+            <p>Born in Sandton, inspired by Africa. We bring together world-class automobiles and the soul of Mzansi—because luxury shouldn’t lose its heartbeat.</p>
+            <div class="highlight-box">
+                <p>Every vehicle we offer is handpicked for quality, character, and value. Every client is treated like family. And every deal? It’s sealed not just with paperwork—but with <strong>respect, heritage, and a shared vision for the road ahead</strong>.</p>
+            </div>
+            <p>We’re not just setting trends. We’re redefining what it means to drive with pride in a new African era—fueled by <strong>excellence</strong>, <strong>integrity</strong>, and the <strong>love of the open road</strong>.</p>
         </div>
-        
-        <p>We’re not just setting trends. We’re redefining what it means to drive with pride in a new African era—fueled by <strong>excellence</strong>, <strong>integrity</strong>, and the <strong>love of the open road</strong>.</p>
-    </div>
-</section>
+    </section>
 
     <!-- Services Section -->
     <section class="services">
         <div class="container">
             <h2 class="section-title">WE MAKE IT EASY</h2>
             <p class="section-subtitle">Your journey to the perfect vehicle starts here</p>
-            
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-car"></i></div>
                     <h3>View Our Inventory</h3>
                     <p>Browse our extensive collection of premium vehicles carefully selected for quality and value.</p>
                     <a href="/inventory" class="service-link">View Inventory <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Get Easy Financing</h3>
                     <p>Let us help you finance your dream car with our hassle-free financing solutions.</p>
                     <a href="/finance" class="service-link">Get Financing <i class="fas fa-arrow-right"></i></a>
                 </div>
-                             
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
                     <h3>Contact Us Today</h3>
                     <p>Have questions or need assistance? Our team is here to help you every step of the way.</p>
                     <a href="/contact.html" class="service-link">Contact Us <i class="fas fa-arrow-right"></i></a>
@@ -933,7 +900,6 @@ footer {
         <div class="container">
             <h2 class="section-title">FEATURED VEHICLES</h2>
             <p class="section-subtitle">Handpicked selection of premium vehicles</p>
-            
             <div class="car-grid">
                 {% for car in featured_listings %}
                 <div class="car-card">
@@ -945,18 +911,9 @@ footer {
                         <h3 class="car-make-model">{{ car.make }} {{ car.model }} {% if car.variant %}{{ car.variant }}{% endif %}</h3>
                         <p class="car-price">{{ car.price_display }}</p>
                         <div class="car-specs">
-                            <div class="spec">
-                                <div class="spec-value">{{ car.mileage }} km</div>
-                                <div class="spec-label">Mileage</div>
-                            </div>
-                            <div class="spec">
-                                <div class="spec-value">{{ car.year }}</div>
-                                <div class="spec-label">Year</div>
-                            </div>
-                            <div class="spec">
-                                <div class="spec-value">{{ car.colour }}</div>
-                                <div class="spec-label">Colour</div>
-                            </div>
+                            <div class="spec"><div class="spec-value">{{ car.mileage }} km</div><div class="spec-label">Mileage</div></div>
+                            <div class="spec"><div class="spec-value">{{ car.year }}</div><div class="spec-label">Year</div></div>
+                            <div class="spec"><div class="spec-value">{{ car.colour }}</div><div class="spec-label">Colour</div></div>
                         </div>
                         <p class="car-description">{{ car.description[:150] }}{% if car.description|length > 150 %}...{% endif %}</p>
                         <a href="/listing/{{ car.id }}" class="view-details">View Details</a>
@@ -971,36 +928,33 @@ footer {
         </div>
     </section>
 
-<!-- Footer -->
-<footer style="background-color: #000; color: #fff; padding: 20px 0;">
-    <div class="container">
-        <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
-            <!-- Social Icons & Email -->
-            <div class="social-icons" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 10px;">
-                <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
-                    <i class="fas fa-envelope" style="font-size: 18px; color: #D4AF37;"></i>
-                </a>
-                <a href="https://wa.me/27767862666" target="_blank" title="WhatsApp" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp" style="font-size: 18px; color: #D4AF37;"></i>
-                </a>
-                <a href="https://facebook.com/theautoagentsSA" target="_blank" title="Facebook" aria-label="Facebook">
-                    <i class="fab fa-facebook-f" style="font-size: 18px; color: #D4AF37;"></i>
-                </a>
-                <a href="https://instagram.com/theautoagents" target="_blank" title="Instagram" aria-label="Instagram">
-                    <i class="fab fa-instagram" style="font-size: 18px; color: #D4AF37;"></i>
-                </a>
-                <a href="https://tiktok.com/@theautoagents" target="_blank" title="TikTok" aria-label="TikTok">
-                    <i class="fab fa-tiktok" style="font-size: 18px; color: #D4AF37;"></i>
-                </a>
-            </div>
-
-            <!-- Copyright Text -->
-            <div class="copyright" style="border-top: 1px solid #333; padding-top: 10px; font-size: 12px; color: #ccc;">
-                &copy; 2025 The Agents. All rights reserved.
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
+                <div class="social-icons">
+                    <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
+                        <i class="fas fa-envelope" style="font-size: 18px; color: #D4AF37;"></i>
+                    </a>
+                    <a href="https://wa.me/27767862666" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp" style="font-size: 18px; color: #D4AF37;"></i>
+                    </a>
+                    <a href="https://facebook.com/theautoagentsSA" target="_blank" title="Facebook" aria-label="Facebook">
+                        <i class="fab fa-facebook-f" style="font-size: 18px; color: #D4AF37;"></i>
+                    </a>
+                    <a href="https://instagram.com/theautoagents" target="_blank" title="Instagram" aria-label="Instagram">
+                        <i class="fab fa-instagram" style="font-size: 18px; color: #D4AF37;"></i>
+                    </a>
+                    <a href="https://tiktok.com/@theautoagents" target="_blank" title="TikTok" aria-label="TikTok">
+                        <i class="fab fa-tiktok" style="font-size: 18px; color: #D4AF37;"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2025 The Agents. All rights reserved.
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         // Slideshow functionality
@@ -1011,36 +965,23 @@ footer {
             const slidesContainer = document.querySelector('.slides-container');
             const totalSlides = slides.length;
             
-            // Function to show slide
             function showSlide(index) {
                 slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-                
-                // Update indicators
                 indicators.forEach((indicator, i) => {
-                    if (i === index) {
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active');
-                    }
+                    indicator.classList.toggle('active', i === index);
                 });
-                
                 currentSlide = index;
             }
             
-            // Auto slide change
             setInterval(() => {
                 currentSlide = (currentSlide + 1) % totalSlides;
                 showSlide(currentSlide);
             }, 5000);
             
-            // Manual navigation
             indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    showSlide(index);
-                });
+                indicator.addEventListener('click', () => showSlide(index));
             });
             
-            // Header scroll effect
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
@@ -1052,22 +993,14 @@ footer {
                 }
             });
         });
-    </script>
-    <script>
+
+        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.getElementById('mobileMenuToggle');
             const navLinks = document.getElementById('navLinks');
-    
-            // Toggle nav visibility on click
-            toggleButton.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
-    
-            // Close nav when clicking a link (optional)
+            toggleButton.addEventListener('click', () => navLinks.classList.toggle('active'));
             document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
+                link.addEventListener('click', () => navLinks.classList.remove('active'));
             });
         });
     </script>
