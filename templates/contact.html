@@ -17,9 +17,23 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            color: #333;
+            background: url("{{ url_for('static', filename='background.jpg') }}") center center fixed;
+            background-size: cover;
+            color: #2c3e50;
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.73); /* Dark overlay for readability */
+            z-index: -1;
         }
 
         .container {
@@ -386,9 +400,9 @@ footer .social-icons a:focus {
             <div class="nav-links" id="navLinks">
                 <a href="/">Home</a>
                 <a href="/inventory">Inventory</a>
-                <a href="/about.html">About</a>
+                <a href="/about">About</a>
                 <a href="/finance">Finance</a>
-                <a href="/contact.html">Contact</a>
+                <a href="/contact">Contact</a>
                 <a href="/gallery">Gallery</a>
             </div>
         </nav>
@@ -471,7 +485,7 @@ footer .social-icons a:focus {
                     </div>
 
                     <!-- Redirect to a thank you page (optional) -->
-                    <!-- <input type="hidden" name="_next" value="https://theautoagents.co.za/thank-you">
+                     <input type="hidden" name="_next" value="https://agents-tkrx.onrender.com/">
                     <!-- Enable reCAPTCHA -->
                     <input type="hidden" name="_captcha" value="true">
 
