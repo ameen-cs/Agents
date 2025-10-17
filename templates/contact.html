@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - The Agents</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         * {
@@ -32,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.73); /* Dark overlay for readability */
+            background: rgba(255, 255, 255, 0.73);
             z-index: -1;
         }
 
@@ -304,15 +304,14 @@
             margin-top: 30px;
         }
 
-        /* Hamburger Icon - Initially hidden on desktop */
+        /* Hamburger Icon */
         .mobile-menu-toggle {
-            display: none; /* Hidden by default */
+            display: none;
             cursor: pointer;
             font-size: 1.5rem;
             color: white;
-            margin-left: auto; /* Push to the right if needed */
+            margin-left: auto;
         }
-
 
         @media (max-width: 768px) {
             .hero h1 {
@@ -327,15 +326,14 @@
                 height: 300px;
             }
 
-            /* Show hamburger only on mobile */
             .mobile-menu-toggle {
-                display: block; /* Show hamburger icon on mobile */
+                display: block;
             }
 
             .nav-links {
-                display: none; /* Hide desktop nav by default on mobile */
+                display: none;
                 position: absolute;
-                top: 70px; /* Adjust based on header height */
+                top: 70px;
                 left: 0;
                 width: 100%;
                 background: #000;
@@ -346,39 +344,25 @@
             }
 
             .nav-links.active {
-                display: flex; /* Show nav when active */
+                display: flex;
             }
 
-             nav a {
-                margin: 0; /* Remove horizontal spacing */
-                padding: 10px 20px; /* Add vertical padding */
-                display: block; /* Make links block elements */
+            nav a {
+                margin: 0;
+                padding: 10px 20px;
+                display: block;
                 text-align: center;
             }
-
         }
 
-        /* Remove underlines from social media icons in footer */
-footer .social-icons a {
-    text-decoration: none; /* This removes the underline */
-    /* The other styles you already have for these icons */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #333;
-    border-radius: 50%;
-    color: white; /* Or your icon color */
-    font-size: 1.2rem; /* Or your icon size */
-    transition: all 0.3s ease;
-}
+        footer .social-icons a {
+            text-decoration: none;
+        }
 
-/* Ensure underline is also removed on hover/focus if needed */
-footer .social-icons a:hover,
-footer .social-icons a:focus {
-    text-decoration: none;
-}
+        footer .social-icons a:hover,
+        footer .social-icons a:focus {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -391,12 +375,9 @@ footer .social-icons a:focus {
             </a>
         </div>
         <nav>
-            <!-- Hamburger Menu for Mobile -->
             <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <i class="fas fa-bars"></i> <!-- Hamburger icon -->
+                <i class="fas fa-bars"></i>
             </div>
-
-            <!-- Desktop Navigation Links -->
             <div class="nav-links" id="navLinks">
                 <a href="/">Home</a>
                 <a href="/inventory">Inventory</a>
@@ -409,124 +390,114 @@ footer .social-icons a:focus {
     </div>
 </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>GET IN TOUCH</h1>
-            <p>Discover a world of sophistication, impeccable service, and exceptional value at The Agents. Every motoring story has a beginning, Let us help you write yours.</p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
+<!-- Hero Section -->
+<section class="hero">
     <div class="container">
-        <div class="contact-container">
-            <!---->
-            <div class="contact-card">
-                <h2>The Agents</h2>
-                <div class="contact-info">
-                    <p><i class="fas fa-quote-left"></i> We buy your beauty and your beast</p>
-
-                    <p><i class="fas fa-map-marker-alt"></i> 229A Bram Fischer Drive<br>Randburg<br>Gauteng</p>
-
-                    <p><i class="fas fa-phone"></i> 087 036 8087</p>
-
-                    <h3>Operating Hours</h3>
-                    <table class="hours-table">
-                        <tr>
-                            <td>Sales Department</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>MON-FRI:</td>
-                            <td>8AM-5PM</td>
-                        </tr>
-                        <tr>
-                            <td>SAT:</td>
-                            <td>9AM-1PM</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-card">
-                <h2>Send Us a Message</h2>
-                <!-- FormSubmit Form -->
-                <form action="https://formsubmit.co/momoameen6@gmail.com" method="POST">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject">
-                            <option value="general">General Inquiry</option>
-                            <option value="sales">Sales Information</option>
-                            <option value="service">Service Request</option>
-                            <option value="testdrive">Test Drive Booking</option>
-                            <option value="finance">Finance Inquiry</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="How can we assist you today?" required></textarea>
-                    </div>
-
-                    <!-- Redirect to a thank you page (optional) -->
-                     <input type="hidden" name="_next" value="https://agents-tkrx.onrender.com/">
-                    <!-- Enable reCAPTCHA -->
-                    <input type="hidden" name="_captcha" value="true">
-
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Map Section -->
-        <div class="map-section">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.59854615989!2d28.03979991502841!3d-26.13723698345593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e951a73d7d8e0b%3A0x6a1b4d4e4e4e4e4e!2s229A%20Bram%20Fischer%20Dr%2C%20Randburg%2C%202194!5e0!3m2!1sen!2sza!4v1623456789012!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-
-        </div>
-
+        <h1>GET IN TOUCH</h1>
+        <p>Discover a world of sophistication, impeccable service, and exceptional value at The Agents. Every motoring story has a beginning, Let us help you write yours.</p>
     </div>
+</section>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="contact-container">
+        <div class="contact-card">
+            <h2>The Agents</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-quote-left"></i> We buy your beauty and your beast</p>
+                <p><i class="fas fa-map-marker-alt"></i> 229A Bram Fischer Drive<br>Randburg<br>Gauteng</p>
+                <p><i class="fas fa-phone"></i> 087 036 8087</p>
+
+                <h3>Operating Hours</h3>
+                <table class="hours-table">
+                    <tr><td>Sales Department</td><td></td></tr>
+                    <tr><td>MON-FRI:</td><td>8AM-5PM</td></tr>
+                    <tr><td>SAT:</td><td>9AM-1PM</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-card">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm" action="https://formsubmit.co/ajax/momoameen6@gmail.com" method="POST">
+                <!-- Honeypot for spam -->
+                <div style="display: none;">
+                    <label>Leave this blank: <input type="text" name="_gotcha"></label>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="general">General Inquiry</option>
+                        <option value="sales">Sales Information</option>
+                        <option value="service">Service Request</option>
+                        <option value="testdrive">Test Drive Booking</option>
+                        <option value="finance">Finance Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can we assist you today?" required></textarea>
+                </div>
+
+                <!-- Consent Checkbox -->
+                <div class="form-group" style="display: flex; align-items: flex-start; gap: 12px; margin-top: 20px;">
+                    <input type="checkbox" name="consent" id="consentCheckbox" required style="margin-top: 6px; width: 18px; height: 18px;">
+                    <label for="consentCheckbox" style="font-weight: 500; font-size: 0.95rem; color: #2c3e50; line-height: 1.5; flex: 1;">
+                        I agree to be contacted and confirm that I have read the 
+                        <a href="https://agents-tkrx.onrender.com/privacy-policy" target="_blank" style="color: #D4AF37; text-decoration: underline; font-weight: 600;">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.59854615989!2d28.03979991502841!3d-26.13723698345593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e951a73d7d8e0b%3A0x6a1b4d4e4e4e4e4e!2s229A%20Bram%20Fischer%20Dr%2C%20Randburg%2C%202194!5e0!3m2!1sen!2sza!4v1623456789012!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
 
 <!-- Footer -->
 <footer style="background-color: #000; color: #fff; padding: 20px 0;">
     <div class="container">
         <div class="footer-bottom" style="text-align: center; margin-top: 10px;">
-            <!-- Social Icons & Email -->
             <div class="social-icons" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 10px;">
                 <a href="mailto:autoagents23@gmail.com" title="Email Us" aria-label="Email">
                     <i class="fas fa-envelope" style="font-size: 18px; color: #D4AF37;"></i>
                 </a>
-                <a href="  https://wa.me/27767862666  " target="_blank" title="WhatsApp" aria-label="WhatsApp">
+                <a href="https://wa.me/27767862666" target="_blank" title="WhatsApp" aria-label="WhatsApp">
                     <i class="fab fa-whatsapp" style="font-size: 18px; color: #D4AF37;"></i>
                 </a>
-                <a href="https://facebook.com/theautoagentsSA  " target="_blank" title="Facebook" aria-label="Facebook">
+                <a href="https://facebook.com/theautoagentsSA" target="_blank" title="Facebook" aria-label="Facebook">
                     <i class="fab fa-facebook-f" style="font-size: 18px; color: #D4AF37;"></i>
                 </a>
-                <a href="https://instagram.com/theautoagents  " target="_blank" title="Instagram" aria-label="Instagram">
+                <a href="https://instagram.com/theautoagents" target="_blank" title="Instagram" aria-label="Instagram">
                     <i class="fab fa-instagram" style="font-size: 18px; color: #D4AF37;"></i>
                 </a>
-                <a href="https://tiktok.com/@theautoagents  " target="_blank" title="TikTok" aria-label="TikTok">
+                <a href="https://tiktok.com/@theautoagents" target="_blank" title="TikTok" aria-label="TikTok">
                     <i class="fab fa-tiktok" style="font-size: 18px; color: #D4AF37;"></i>
                 </a>
             </div>
-
-            <!-- Copyright Text -->
             <div class="copyright" style="border-top: 1px solid #333; padding-top: 10px; font-size: 12px; color: #ccc;">
                 &copy; 2025 The Agents. All rights reserved.
             </div>
@@ -534,26 +505,84 @@ footer .social-icons a:focus {
     </div>
 </footer>
 
-    <script>
-        // Removed the old form submission script as it's no longer needed
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-            // Toggle nav visibility on click
-            toggleButton.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
+        toggleButton.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
 
-            // Close nav when clicking a link (Delegate event for dynamically added links if needed, but this works for static ones)
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
             });
         });
-    </script>
+    });
+</script>
+
+<!-- AJAX Form Submission with Thank You Message -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                form.innerHTML = `
+                    <div style="text-align: center; padding: 30px 20px;">
+                        <h2 style="color: #000; margin-bottom: 15px; font-size: 1.8rem;">Thank You!</h2>
+                        <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+                            Your message has been sent successfully.<br>
+                            We’ll get back to you shortly.
+                        </p>
+                        <a href="/" style="
+                            display: inline-block;
+                            margin-top: 20px;
+                            padding: 10px 20px;
+                            background: #000;
+                            color: white;
+                            text-decoration: none;
+                            border-radius: 8px;
+                            font-weight: 500;
+                        ">← Back to Home</a>
+                    </div>
+                `;
+            } else {
+                alert('Oops! ' + (result.message || 'Something went wrong. Please try again.'));
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Submission failed. Please check your internet connection and try again.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
+    });
+});
+</script>
+
 </body>
 </html>
