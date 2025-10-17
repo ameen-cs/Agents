@@ -353,6 +353,11 @@ def health_check():
 def gallery():
     return render_template("gallery.html")
 
+# Add route for privacy policy page
+@app.route("/privacy-policy")
+def privacy_policy():
+    return render_template("privacy-policy.html")
+
 if __name__ == "__main__":
     app.run(debug=True) 
 
