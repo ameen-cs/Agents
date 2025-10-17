@@ -1,22 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPFE888CN0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DPFE888CN0');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPFE888CN0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-DPFE888CN0');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Agents | Premium Vehicles in South Africa</title>
+    <title>The Agents | Premium Pre-Owned Luxury Cars in Sandton, South Africa</title>
+    <meta name="description" content="The Agents: Sandton's premier luxury vehicle dealership. Handpicked McLaren, Bentley & premium cars. Easy financing, nationwide delivery, and exceptional service.">
+    <link rel="canonical" href="https://agents-tkrx.onrender.com/">
+    
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agents-tkrx.onrender.com/">
+    <meta property="og:title" content="The Agents | Premium Luxury Cars in South Africa">
+    <meta property="og:description" content="Discover handpicked McLaren, Bentley & premium vehicles in Sandton. Finance options, nationwide delivery, and white-glove service.">
+    <meta property="og:image" content="https://agents-tkrx.onrender.com/static/IMG3.jpg">
+    <meta property="og:site_name" content="The Agents">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Agents | Luxury Car Dealership in Sandton">
+    <meta name="twitter:description" content="Premium pre-owned luxury cars with integrity, heritage, and African soul.">
+    <meta name="twitter:image" content="https://agents-tkrx.onrender.com/static/IMG3.jpg">
+    
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoDealer",
+      "name": "The Agents",
+      "image": "https://agents-tkrx.onrender.com/static/logo.jpg",
+      "url": "https://agents-tkrx.onrender.com",
+      "telephone": "+27767862666",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "229A Bram Fischer Drive",
+        "addressLocality": "Randburg",
+        "addressRegion": "Gauteng",
+        "postalCode": "2194",
+        "addressCountry": "ZA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.1372369,
+        "longitude": 28.0397999
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://facebook.com/theautoagentsSA",
+        "https://instagram.com/theautoagents",
+        "https://tiktok.com/@theautoagents",
+        "https://wa.me/27767862666"
+      ]
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
