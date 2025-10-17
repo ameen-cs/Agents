@@ -1,5 +1,5 @@
 {
-  "timestamp": 1760706097.0418246,
+  "timestamp": 1760708494.9901047,
   "data": [
     {
       "id": 27391495,
@@ -4449,7 +4449,7 @@
       "dealerLogoUrl": "https://img.autotrader.co.za/37767951",
       "tummCode": 44084102,
       "serviceHistory": "Partial",
-      "stockNumber": "1581",
+      "stockNumber": "1580",
       "vehicleCategory": "Cars",
       "features": [],
       "dealerContactInformation": {
@@ -4467,7 +4467,7 @@
         }
       },
       "created": "2025-10-17T14:47:18.1444541+02:00",
-      "updated": "2025-10-17T14:48:06.7469612+02:00"
+      "updated": "2025-10-17T15:19:02.3777048+02:00"
     }
   ]
 }
