@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Recurse -File static | Select-Object -ExpandProperty FullName | ForEach-Object { $_.Replace\\(\"C:\\\\Users\\\\Admin\\\\Documents\\\\Vibe Code\\\\Agents\\\\\",\"\"\\) })",
+      "PowerShell(python freeze.py 2>&1)"
+    ]
+  }
+}
